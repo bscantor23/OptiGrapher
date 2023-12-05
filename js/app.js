@@ -1,7 +1,3 @@
-particlesJS.load("particles-js", "./assets/particles.json", function () {
-  console.log("callback - particles.js config loaded");
-});
-
 const generateTargetFunction = (number, end) => {
   return `
   <div class="col-auto">
