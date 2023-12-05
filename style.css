@@ -1,0 +1,241 @@
+:root {
+  --primary-color: #e02f56;
+  --secondary-color: #eb6b87;
+  --third-color: #760921;
+  --fourth-color: #e5b8c2;
+  --shadow-color: #d68193a5;
+  --background-color: #f5f5f5;
+  --header-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+@font-face {
+  font-family: "Aleo";
+  src: url("fonts/Aleo/static/Aleo-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Aleo";
+  src: url("fonts/Aleo/static/Aleo-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Aleo";
+  src: url("fonts/Aleo/static/Aleo-Italic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+}
+
+::-webkit-scrollbar-track:horizontal {
+  background-color: #ffffff;
+  border-radius: 8px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb:horizontal {
+  background-color: var(--shadow-color);
+  border-radius: 8px;
+}
+
+/* Corner */
+::-webkit-scrollbar-corner:horizontal {
+  background-color: #ffffff;
+}
+
+::-webkit-scrollbar {
+  height: 6px;
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar {
+  width: 0px; /* Ajusta según sea necesario para tu diseño */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: transparent; /* Color transparente para ocultar el thumb */
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+}
+
+body {
+  overflow-y: scroll;
+  font-family: "Aleo", sans-serif;
+  height: 100vh;
+  background-size: cover; /* Esto ajustará la imagen para cubrir todo el contenedor */
+  background-position: center; /* Esto centrará la imagen */
+  background-repeat: no-repeat; /* Esto evita que la imagen se repita */
+}
+
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Asigna un z-index inferior al div de contenido */
+}
+
+header {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 20px;
+  box-shadow: var(--header-shadow);
+}
+
+h1 {
+  font-size: 40px;
+  margin: 0; /* Elimina el margen predeterminado del h1 */
+}
+
+.method-container {
+  max-width: 60%;
+  margin: 0 auto;
+  padding: 20px 20px 0px;
+  border-radius: 8px;
+  margin-top: 50px;
+}
+
+.parameters-container {
+  margin: 0 auto;
+  border-radius: 8px;
+  /*border: 1px solid #ccc;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #fff;*/
+}
+
+.target-container {
+  width: 100%;
+}
+
+.elastic-group-row {
+  width: auto !important;
+  padding-bottom: 10px;
+}
+
+.target-container,
+.target-container input {
+  font-size: 14px !important;
+}
+
+.target-container input {
+  width: 80px;
+}
+
+hr {
+  border: 1px solid var(--primary-color);
+  opacity: 1 !important;
+}
+
+.btn {
+  background-color: var(--primary-color) !important;
+  color: #fff !important;
+  max-width: 150px !important;
+}
+
+table {
+  border: 2px solid #e02f56;
+  padding: 3px;
+}
+
+table td {
+  border: 1px solid #fff; /* Borde blanco */
+  padding: 5px;
+  text-align: center;
+}
+
+table.dataTable {
+  margin: 0 auto;
+}
+
+.cell-style-1 {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.cell-style-2 {
+  background-color: var(--secondary-color);
+  color: #fff;
+}
+
+.cell-style-3 {
+  background-color: var(--primary-color);
+  color: #fff;
+  text-align: right !important;
+  padding-right: 20px;
+  border-bottom: none !important;
+}
+
+.cell-style-4 {
+  background-color: var(--primary-color);
+  color: #fff;
+  text-align: left !important;
+  padding-left: 20px;
+  border-top: none !important;
+}
+
+.cell-style-5 {
+  background-color: var(--third-color);
+  color: #fff;
+}
+
+.cell-style-6 {
+  background-color: var(--fourth-color);
+  color: #fff;
+}
+
+#loading-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding-top: 20%;
+}
+
+#loading-overlay p {
+  padding-top: 10px;
+  font-weight: bold;
+}
+
+#loading-indicator {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid var(--primary-color);
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.phase-title {
+  padding: 10px 0px;
+  background-color: var(--primary-color);
+  color: #fff;
+}

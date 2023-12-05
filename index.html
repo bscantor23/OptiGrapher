@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Two Phases</title>
+    <!-- Enlaces a las bibliotecas de Bootstrap 5 y jQuery -->
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link href="lib/datatables/datatables.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="lib/math/math.min.js"></script>
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/datatables/datatables.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/popper/popper.min.js"></script>
+    <script src="lib/particles/particles.min.js"></script>
+    <script src="lib/sweet-alert/sweet-alert.min.js"></script>
+    <script src="js/logic.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/grapher.js"></script>
+  </head>
+  <body>
+    <div id="particles-js"></div>
+
+    <div id="loading-overlay">
+      <div id="loading-indicator"></div>
+      <p>Cargando...</p>
+    </div>
+
+    <header class="container-fluid">
+      <h1 class="text-center">OptiGrapher</h1>
+    </header>
+
+    <form id="method-form">
+      <div class="container method-container mt-0">
+        <hr />
+        <div class="mb-3 row d-flex justify-content-center">
+          <label for="metodo" class="col-sm-auto col-form-label text-end"
+            >Método:</label
+          >
+          <div class="col-auto">
+            <select
+              class="form-select"
+              id="method-select"
+              name="method"
+              style="max-width: 200px"
+              required
+            >
+              <option value="0" selected>Two Phases</option>
+              <option value="1">Grapher</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mb-3 row justify-content-center">
+          <label for="num-decision" class="col-sm-auto col-form-label text-end"
+            >Número de Variables de Decisión:</label
+          >
+          <div class="col-auto">
+            <input
+              type="number"
+              class="form-control"
+              id="variables"
+              name="variables"
+              style="width: 90px"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="mb-3 row justify-content-center">
+          <label
+            for="num-restricciones"
+            class="col-sm-auto col-form-label text-end"
+            >Número de Restricciones:</label
+          >
+          <div class="col-auto">
+            <input
+              type="number"
+              class="form-control"
+              id="restrictions"
+              name="restrictions"
+              style="width: 90px"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="mb-3 row justify-content-center">
+          <button type="button" class="btn" onclick="checkForm()">
+            Proyectar
+          </button>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center px-5">
+        <hr class="w-100" />
+      </div>
+    </form>
+
+    <form id="target-form" style="display: none">
+      <div class="container p-0 parameters-container">
+        <div class="mb-3 row d-flex justify-content-center">
+          <label for="objetivo" class="col-sm-auto col-form-label text-end"
+            >Objetivo:</label
+          >
+          <div class="col-auto">
+            <select
+              class="form-select"
+              id="natureSystem"
+              style="max-width: 200px"
+            >
+              <option value="0">Minimizar</option>
+              <option value="1">Maximizar</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row justify-content-center pt-2">
+          <div class="target-container">
+            <div
+              id="target-variables"
+              class="mb-3 row elastic-row elastic-group-row flex-nowrap"
+            >
+              <div class="col-auto">
+                <label for="funcion" class="col-sm-auto col-form-label text-end"
+                  >Función:</label
+                >
+              </div>
+            </div>
+            <div class="mb-3 row justify-content-center">
+              <div class="col-auto py-0 px-2">
+                <label
+                  for="funcion"
+                  class="col-sm-auto col-form-label text-end"
+                  style="font-size: 16px"
+                  >Restricciones:</label
+                >
+              </div>
+            </div>
+            <div id="target-restrictions" class="elastic-group-row"></div>
+            <div class="mb-3 row justify-content-center">
+              <div class="col-auto py-0 px-2">
+                <label
+                  id="variable-label"
+                  for="funcion"
+                  class="col-sm-auto col-form-label text-end"
+                ></label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3 row justify-content-center">
+          <button
+            id="calculateButton"
+            type="button"
+            class="btn"
+            onclick="calculate()"
+          >
+            Calcular
+          </button>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-center px-5">
+        <hr class="w-100" />
+      </div>
+    </form>
+
+    <div id="canvas-container" class="container" style="display: none">
+      <div id="canvas-row-container" class="row justify-content-center">
+        <canvas id="graphCanvas" style="width: 700px; height: 500px"></canvas>
+      </div>
+      <div id="graph-label" class="row justify-content-center"></div>
+    </div>
+
+    <div
+      id="iterations-container"
+      class="container"
+      style="display: none"
+    ></div>
+
+    <div class="container">
+      <div class="row justify-content-end">
+        <button type="button" class="btn" onclick="credits()">Créditos</button>
+      </div>
+    </div>
+  </body>
+</html>
